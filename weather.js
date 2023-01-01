@@ -86,10 +86,19 @@ const getWeatherDataFromApi = async () => {
                             li => $(li).find("span").text() == name
                         );
                 if (filteredArray.length > 0) {
+                   const as = setTimeout(function() { 
+                        
+                        clearTimeout(as);
+                        msgJQ.text("");
+                        msgJQ.css({});
+
+                    }, 2000);
                     //innerText
                     msgJQ.text(`You already know the weather for ${name}, Please search for another city 😉`);
                     //styling
+                    
                     msgJQ.css({ "color": "red", "text-decoration": "underline" });
+                    formJquery.trigger("reset");
                     return;
                 }
             }
